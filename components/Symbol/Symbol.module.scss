@@ -1,0 +1,18 @@
+.Symbol {
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 48px;
+
+  &__sX {
+    color: red;
+  }
+
+  &__sO {
+    color: green;
+  }
+}

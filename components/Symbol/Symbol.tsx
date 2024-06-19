@@ -1,9 +1,22 @@
-import styles from "./Symbol.module.scss";
+import { clsx } from 'clsx';
 
-export default function Symbol() {
+import s from './Symbol.module.scss';
+import { SYMBOL_O, SYMBOL_X } from '@/lib/constants/constants';
+
+interface SymbolProps {
+  symbol: string | null;
+  isField: boolean;
+}
+
+export default function Symbol({ symbol, isField }: SymbolProps) {
   return (
-    <main className={styles.main}>
-      init project
-    </main>
+    <div
+      className={clsx({
+        [s.Symbol]: isField,
+        [s.Symbol__sX]: symbol === SYMBOL_X,
+        [s.Symbol__sO]: symbol === SYMBOL_O,
+      })}>
+      {symbol ? symbol : null}
+    </div>
   );
 }

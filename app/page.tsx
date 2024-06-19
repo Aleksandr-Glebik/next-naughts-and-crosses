@@ -1,9 +1,11 @@
-import styles from "./page.module.scss";
+import GameField from '@/components/GameField/GameField';
+
+import s from './page.module.scss';
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      init project
+    <main className={s.main}>
+      <GameField />
     </main>
   );
 }
