@@ -8,6 +8,7 @@ import Symbol from '../Symbol/Symbol';
 import s from './GameField.module.scss';
 import { SYMBOL_O, SYMBOL_X, INITIAL_CELLS } from '@/lib/constants/constants';
 import { computeWinner } from '@/utils/func/computeWinner';
+import GameInfo from '../GameInfo/GameInfo';
 
 export default function GameField() {
   const [currentSymbol, setCurrentSymbol] = useState<string | null>(SYMBOL_O);
@@ -23,7 +24,6 @@ export default function GameField() {
     copyCells[ind] = currentSymbol;
 
     const winner = computeWinner(copyCells);
-    console.log('winner', winner);
 
     setCells(copyCells);
     setCurrentSymbol(currentSymbol === SYMBOL_X ? SYMBOL_O : SYMBOL_X);
@@ -31,18 +31,23 @@ export default function GameField() {
   };
 
   const winnerSymbol = winSequence ? cells[winSequence?.[0]] : currentSymbol;
+  const isDraw = !winSequence && cells.filter((value) => value).length === 9;
 
-  const resetGame = useCallback(() => {
-    setCells(INITIAL_CELLS)
+  const handleResetClick = useCallback(() => {
+    setCells(INITIAL_CELLS);
     setWinSequence(undefined);
-  }, [])
+    setCurrentSymbol(SYMBOL_O);
+  }, []);
 
   return (
     <div className={s.Field}>
-      <h2 className={s.Field__title}>
-        {winSequence ? 'Победитель:' : 'Ход:'} <Symbol symbol={winnerSymbol ?? currentSymbol} />
-      </h2>
-      <div className={s.Field__game}>
+      <GameInfo
+        isDraw={isDraw}
+        winSequence={winSequence}
+        winnerSymbol={winnerSymbol}
+        currentSymbol={currentSymbol}
+      />
+      <div className={s.GameCells}>
         {cells.map((el, index) => {
           const isWinner = winSequence?.includes(index);
           return (
@@ -57,7 +62,9 @@ export default function GameField() {
           );
         })}
       </div>
-      <button className={s.ResetBtn} onClick={resetGame}>Сбросить</button>
+      <button className={s.ResetBtn} onClick={handleResetClick}>
+        Сбросить
+      </button>
     </div>
   );
 }
