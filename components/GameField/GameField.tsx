@@ -1,19 +1,21 @@
 'use client';
 
 import { useCallback, useState } from 'react';
-import { clsx } from 'clsx';
 
-import Symbol from '../Symbol/Symbol';
+import GameInfo from '../GameInfo/GameInfo';
+import GameCell from '../GameCell/GameCell';
 
 import s from './GameField.module.scss';
 import { SYMBOL_O, SYMBOL_X, INITIAL_CELLS } from '@/lib/constants/constants';
 import { computeWinner } from '@/utils/func/computeWinner';
-import GameInfo from '../GameInfo/GameInfo';
 
 export default function GameField() {
   const [currentSymbol, setCurrentSymbol] = useState<string | null>(SYMBOL_O);
   const [cells, setCells] = useState(INITIAL_CELLS);
   const [winSequence, setWinSequence] = useState<number[] | undefined>();
+
+  const winnerSymbol = winSequence ? cells[winSequence?.[0]] : currentSymbol;
+  const isDraw = !winSequence && cells.filter((value) => value).length === 9;
 
   const handleCellClick = (ind: number) => {
     if (cells[ind] || winSequence) {
@@ -30,9 +32,6 @@ export default function GameField() {
     setWinSequence(winner);
   };
 
-  const winnerSymbol = winSequence ? cells[winSequence?.[0]] : currentSymbol;
-  const isDraw = !winSequence && cells.filter((value) => value).length === 9;
-
   const handleResetClick = useCallback(() => {
     setCells(INITIAL_CELLS);
     setWinSequence(undefined);
@@ -48,19 +47,14 @@ export default function GameField() {
         currentSymbol={currentSymbol}
       />
       <div className={s.GameCells}>
-        {cells.map((el, index) => {
-          const isWinner = winSequence?.includes(index);
-          return (
-            <button
-              className={clsx(s.Button, {
-                [s.Button__win]: isWinner,
-              })}
-              key={`${el}_${index}`}
-              onClick={() => handleCellClick(index)}>
-              <Symbol symbol={el} />
-            </button>
-          );
-        })}
+        {cells.map((el, index) => (
+          <GameCell  
+            key={`${el}_${index}`}
+            element={el}
+            onClick={() => handleCellClick(index)}
+            isWinner={winSequence?.includes(index)}
+          />
+        ))}
       </div>
       <button className={s.ResetBtn} onClick={handleResetClick}>
         Сбросить
