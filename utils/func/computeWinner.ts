@@ -1,4 +1,6 @@
-export const computeWinner = (cells: (string | null)[]): number[] | undefined => {
+export const computeWinner = (
+  cells: (string | null)[],
+): number[] | undefined => {
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -12,6 +14,7 @@ export const computeWinner = (cells: (string | null)[]): number[] | undefined =>
 
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
-    if (cells[a] && cells[a] === cells[b] && cells[a] === cells[c]) return [a, b, c];
+    if (cells[a] && cells[a] === cells[b] && cells[a] === cells[c])
+      return [a, b, c];
   }
 };

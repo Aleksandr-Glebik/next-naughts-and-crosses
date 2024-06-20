@@ -1,4 +1,4 @@
-import Symbol from './Symbol';
+import Symbol from "./Symbol";
 
 interface GameInfoProps {
   isDraw: boolean;
@@ -23,7 +23,7 @@ export default function GameInfo({
 
   return (
     <h2 className="text-3xl text-black-400 flex justify-center items-center gap-4">
-      {winSequence ? 'Победитель:' : 'Ход:'}
+      {winSequence ? "Победитель:" : "Ход:"}
       <Symbol symbol={winnerSymbol ?? currentSymbol} />
     </h2>
   );

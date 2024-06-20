@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import Container from './Container';
-import GameInfo from './GameInfo';
-import GameCell from './GameCell';
-import GameCells from './GameCells';
-import ResetButton from './ResetButton';
+import Container from "./Container";
+import GameInfo from "./GameInfo";
+import GameCell from "./GameCell";
+import GameCells from "./GameCells";
+import ResetButton from "./ResetButton";
 
-import { useGameState } from '@/utils/hooks/useGameState';
+import { useGameState } from "@/utils/hooks/useGameState";
 
 export default function GameField() {
   const {

@@ -1,7 +1,7 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback } from "react";
 
-import { INITIAL_CELLS, SYMBOL_O, SYMBOL_X } from '@/lib/constants/constants';
-import { computeWinner } from '../func/computeWinner';
+import { INITIAL_CELLS, SYMBOL_O, SYMBOL_X } from "@/lib/constants/constants";
+import { computeWinner } from "../func/computeWinner";
 
 export const useGameState = () => {
   const [currentSymbol, setCurrentSymbol] = useState<string | null>(SYMBOL_O);
