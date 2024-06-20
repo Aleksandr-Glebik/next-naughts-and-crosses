@@ -1,7 +1,7 @@
 import { clsx } from 'clsx';
 
-import s from './Symbol.module.scss';
 import { SYMBOL_O, SYMBOL_X } from '@/lib/constants/constants';
+
 interface SymbolProps {
   symbol: string | null;
 }
@@ -9,9 +9,9 @@ interface SymbolProps {
 export default function Symbol({ symbol }: SymbolProps) {
   return (
     <div
-      className={clsx(s.Symbol, {
-        [s.Symbol__sX]: symbol === SYMBOL_X,
-        [s.Symbol__sO]: symbol === SYMBOL_O,
+      className={clsx('text-4xl', {
+        ['text-red-600']: symbol === SYMBOL_X,
+        ['text-green-600']: symbol === SYMBOL_O,
       })}>
       {symbol ? symbol : null}
     </div>

@@ -1,6 +1,5 @@
-import Symbol from '../Symbol/Symbol';
+import Symbol from './Symbol';
 
-import s from './GameInfo.module.scss';
 interface GameInfoProps {
   isDraw: boolean;
   winnerSymbol: string | null;
@@ -16,14 +15,14 @@ export default function GameInfo({
 }: GameInfoProps) {
   if (isDraw) {
     return (
-      <h2 className={s.Title}>
-        <span className={s.isDraw}>Ничья</span>
+      <h2 className="text-3xl text-blue-600 flex justify-center items-center gap-4 ">
+        <span className="font-bold">Ничья</span>
       </h2>
     );
   }
 
   return (
-    <h2 className={s.Title}>
+    <h2 className="text-3xl text-black-400 flex justify-center items-center gap-4">
       {winSequence ? 'Победитель:' : 'Ход:'}
       <Symbol symbol={winnerSymbol ?? currentSymbol} />
     </h2>

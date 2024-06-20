@@ -5,8 +5,8 @@ import './globals.scss';
 const OpenSans = Open_Sans({ subsets: ['latin'], weight: ['400', '600'] });
 
 export const metadata: Metadata = {
-  title: 'Naughts and crosses',
-  description: 'Game Naughts and crosses (React, Next, TypeScript, SCSS)',
+  title: 'Tic-Tak-Toe Online',
+  description: 'Game Tic-Tak-Toe Online (Next, TypeScript, Tailwind)',
 };
 
 export default function RootLayout({

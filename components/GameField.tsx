@@ -1,9 +1,11 @@
 'use client';
 
-import GameInfo from '../GameInfo/GameInfo';
-import GameCell from '../GameCell/GameCell';
+import Container from './Container';
+import GameInfo from './GameInfo';
+import GameCell from './GameCell';
+import GameCells from './GameCells';
+import ResetButton from './ResetButton';
 
-import s from './GameField.module.scss';
 import { useGameState } from '@/utils/hooks/useGameState';
 
 export default function GameField() {
@@ -18,14 +20,14 @@ export default function GameField() {
   } = useGameState();
 
   return (
-    <div className={s.Field}>
+    <Container>
       <GameInfo
         isDraw={isDraw}
         winSequence={winSequence}
         winnerSymbol={winnerSymbol}
         currentSymbol={currentSymbol}
       />
-      <div className={s.GameCells}>
+      <GameCells>
         {cells.map((el, index) => (
           <GameCell
             key={`${el}_${index}`}
@@ -34,10 +36,8 @@ export default function GameField() {
             isWinner={winSequence?.includes(index)}
           />
         ))}
-      </div>
-      <button className={s.ResetBtn} onClick={handleResetClick}>
-        Сбросить
-      </button>
-    </div>
+      </GameCells>
+      <ResetButton onClick={handleResetClick} />
+    </Container>
   );
 }
