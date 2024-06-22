@@ -1,10 +1,15 @@
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
+import clsx from "clsx";
+
 import "./globals.scss";
 
 import { Header } from "@/components/Header";
 
-const OpenSans = Open_Sans({ subsets: ["latin", "cyrillic"], weight: ["400", "600"] });
+const OpenSans = Open_Sans({
+  subsets: ["latin", "cyrillic"],
+  weight: ["400", "600"],
+});
 
 export const metadata: Metadata = {
   title: "Tic-Tak-Toe Online",
@@ -18,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={OpenSans.className}>
+      <body className={clsx(OpenSans.className, "min-h-screen bg-slate=200")}>
         <Header />
         {children}
       </body>
