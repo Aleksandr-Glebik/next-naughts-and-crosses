@@ -1,4 +1,4 @@
-import LinkBack from "../LinkBack/LinkBack";
+import LinkBack from "./LinkBack/LinkBack";
 import { StarIcon } from "@/components/Icons/StarIcon";
 import { UserIcon } from "@/components/Icons/UserIcon";
 import { WatchIcon } from "@/components/Icons/WatchIcon";
