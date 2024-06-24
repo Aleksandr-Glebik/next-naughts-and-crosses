@@ -1,7 +1,7 @@
 import Logo from "./Logo/Logo";
 import User from "./User/User";
-import PlayButton from "./PlayButton/PlayButton";
 import { ArrowUpOrDownIcon } from "../Icons/ArrowUpOrDownIcon";
+import UIButton from "../UIKit/UIButton";
 
 export function Header() {
   return (
@@ -9,10 +9,10 @@ export function Header() {
       <div className="flex justify-start items-center gap-8">
         <Logo />
         <div className="w-px h-8 bg-slate-200" />
-        <PlayButton />
+        <UIButton size="lg" variant="primary">Играть</UIButton>
       </div>
       <button className="flex justify-center items-center gap-3 transition-colors text-teal-600 hover:text-teal-400">
-        <User name="Glebikaa" rating={1230} avatar='../../../public/first-avatar.png' />
+        <User name="Glebikaa" rating={1230} avatar={'firstAvatar'} />
         <ArrowUpOrDownIcon />
       </button>
     </header>

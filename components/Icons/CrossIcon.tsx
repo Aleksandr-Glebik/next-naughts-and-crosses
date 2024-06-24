@@ -1,6 +1,11 @@
-export function CrossIcon() {
+interface Props {
+  className?: string;
+}
+
+export function CrossIcon({ className }: Props) {
   return (
     <svg
+      className={className}
       xmlns="http://www.w3.org/2000/svg"
       width="12"
       height="12"

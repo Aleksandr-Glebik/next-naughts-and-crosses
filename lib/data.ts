@@ -15,7 +15,7 @@ interface UserInfoProps {
 export const playerList: UserInfoProps[] = [
     {
         id: 1,
-        icon: CrossIcon(),
+        icon: CrossIcon(""),
         name: 'Glebikaa',
         rating: 1280,
         avatar: 'firstAvatar',
@@ -23,7 +23,7 @@ export const playerList: UserInfoProps[] = [
     },
     {
         id: 2,
-        icon: ZeroIcon(),
+        icon: ZeroIcon(""),
         name: 'Valentina',
         rating: 850,
         avatar: 'secondAvatar',
