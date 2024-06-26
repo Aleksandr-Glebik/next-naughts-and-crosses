@@ -5,16 +5,20 @@ import { useEffect } from "react";
 import ControlPanel from "./ControlPanel/ControlPanel";
 import GameGrid from "./GameGrid/GameGrid";
 
-import { useOnlineGameState } from "@/utils/hooks/useOnlineGameState";
-
+import { GAME_SYMBOLS } from "@/lib/constants/constants";
 interface Props {
-  playersCount: number;
+  cells: (GAME_SYMBOLS | null)[];
+  currentMove: GAME_SYMBOLS;
+  nextMove: GAME_SYMBOLS;
+  handleCellClick: (index: number) => void;
 }
 
-export function GameField({ playersCount }: Props) {
-  const { cells, currentMove, nextMove, handleCellClick } =
-    useOnlineGameState(playersCount);
-
+export function GameField({
+  cells,
+  currentMove,
+  nextMove,
+  handleCellClick,
+}: Props) {
   useEffect(() => {
     if (cells) {
       console.log("cells", cells);
