@@ -7,9 +7,13 @@ import GameGrid from "./GameGrid/GameGrid";
 
 import { useOnlineGameState } from "@/utils/hooks/useOnlineGameState";
 
-export function GameField() {
+interface Props {
+  playersCount: number;
+}
+
+export function GameField({ playersCount }: Props) {
   const { cells, currentMove, nextMove, handleCellClick } =
-    useOnlineGameState();
+    useOnlineGameState(playersCount);
 
   useEffect(() => {
     if (cells) {

@@ -8,7 +8,7 @@ interface GameStateProps {
   currentMove: GAME_SYMBOLS;
 }
 
-export const useOnlineGameState = () => {
+export const useOnlineGameState = (playersCount: number) => {
   const [{ cells, currentMove }, setGameState] = useState<GameStateProps>(
     () => ({
       cells: new Array(19 * 19).fill(null),
@@ -16,7 +16,7 @@ export const useOnlineGameState = () => {
     }),
   );
 
-  const nextMove: GAME_SYMBOLS = getNextMove(currentMove);
+  const nextMove: GAME_SYMBOLS = getNextMove(currentMove, playersCount);
 
   const handleCellClick = (index: number) => {
     setGameState((lastGameState) => {
@@ -26,7 +26,7 @@ export const useOnlineGameState = () => {
 
       return {
         ...lastGameState,
-        currentMove: getNextMove(lastGameState.currentMove),
+        currentMove: getNextMove(lastGameState.currentMove, playersCount),
         cells: lastGameState.cells.map((cell, i) =>
           i === index ? lastGameState.currentMove : cell,
         ),

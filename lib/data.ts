@@ -1,11 +1,7 @@
-import { CrossIcon } from "@/components/Icons/CrossIcon";
-import { ZeroIcon } from "@/components/Icons/ZeroIcon";
-import { SquareIcon } from "@/components/Icons/SquareIcon";
-import { TriangleIcon } from "@/components/Icons/TriangleIcon";
-
+import { GAME_SYMBOLS } from "./constants/constants";
 interface UserInfoProps {
   id: number;
-  icon: React.ReactNode | JSX.Element;
+  symbol: GAME_SYMBOLS;
   name: string;
   rating: number;
   avatar: string;
@@ -15,7 +11,7 @@ interface UserInfoProps {
 export const playerList: UserInfoProps[] = [
   {
     id: 1,
-    icon: CrossIcon(""),
+    symbol: GAME_SYMBOLS.CROSS,
     name: "Glebikaa",
     rating: 1280,
     avatar: "firstAvatar",
@@ -23,15 +19,15 @@ export const playerList: UserInfoProps[] = [
   },
   {
     id: 2,
-    icon: ZeroIcon(""),
-    name: "Valentina",
+    symbol: GAME_SYMBOLS.ZERO,
+    name: "Valentina Kostromskaia",
     rating: 850,
     avatar: "secondAvatar",
     time: "00:08",
   },
   {
     id: 3,
-    icon: SquareIcon(""),
+    symbol: GAME_SYMBOLS.TRIANGLE,
     name: "Lara",
     rating: 1400,
     avatar: "thirdAvatar",
@@ -39,7 +35,7 @@ export const playerList: UserInfoProps[] = [
   },
   {
     id: 4,
-    icon: TriangleIcon(""),
+    symbol: GAME_SYMBOLS.SQUARE,
     name: "Pavel",
     rating: 7600,
     avatar: "fourthAvatar",

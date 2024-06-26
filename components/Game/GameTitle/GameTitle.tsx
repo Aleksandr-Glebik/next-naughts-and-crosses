@@ -3,7 +3,11 @@ import { StarIcon } from "@/components/Icons/StarIcon";
 import { UserIcon } from "@/components/Icons/UserIcon";
 import { WatchIcon } from "@/components/Icons/WatchIcon";
 
-export function GameTitle() {
+interface Props {
+  playersCount: number;
+}
+
+export function GameTitle({ playersCount }: Props) {
   return (
     <div className="flex flex-col justify-start items-start gap-1">
       <LinkBack />
@@ -11,7 +15,8 @@ export function GameTitle() {
       <div className="flex items-center gap-3 text-slate-400 text-xs">
         <StarIcon />
         <div className="flex items-center gap-1">
-          <UserIcon />2
+          <UserIcon />
+          {playersCount}
         </div>
         <div className="flex items-center gap-1">
           <WatchIcon />1 мин на ход
